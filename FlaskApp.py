@@ -10,11 +10,6 @@ all you have to do is run python flaskapp.py to get this running.  Nothing else 
 # A very simple Flask Hello World app for you to get started with...
 
 from flask import Flask, render_template, request, send_file, flash
-from helper import to_uppercase
-import PDF_Reader
-import io
-from openpyxl import Workbook, load_workbook
-from scraper_service import process_pdfs
 import os
 
 #Need to do this to fire up the app
@@ -23,9 +18,10 @@ app.secret_key = os.environ.get("FLASK_SECRET_KEY", os.urandom(24))
 
 #This is the homepage
 @app.route('/')
-def landing():
+def home():
     #return render_template('gradient.html')
-    return render_template('home.html')
+    company_name = 'Poopoo Peepee'
+    return render_template('home.html', company_name = company_name)
 
 
 

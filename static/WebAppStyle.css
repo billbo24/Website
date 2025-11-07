@@ -2,16 +2,66 @@
 
 /* Set the background color for the whole page */
 
+
+
 html, body {
   height: 100%;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  /*font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;*/
   transition: background-color 0.2s linear; /* small smoothing fallback */
+
+  font-family: 'Circular Std', Arial, sans-serif;
+  /*font-size: 16px;*/
 }
 
 
+
+.navbar {
+  box-sizing: border-box; /* include padding in width calculation */
+  position: fixed;  /* keeps it fixed to the viewport */
+  top: 0;           /* sticks to the top */
+  left: 0;          /* align to left edge */
+  width: 100%;      /* span the entire width */
+  z-index: 1000;    /* stays above other content */
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  padding: 10px 40px; /* stays inside the width */
+  background-color: rgba(32, 198, 29, 0.0);
+  color: white;
+}
+
+
+.logo-img {
+  height: 40px;           /* Adjust as needed */
+  width: auto;
+  vertical-align: middle; /* keeps it aligned with text or nav links */
+  filter: brightness(0) invert(1); /* optional: makes black logo appear white on dark bg */
+}
+
+.nav-links a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: white;
+  font-size: 1.1em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #ff9800;
+}
+
+.logo a {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
 /* full-page sections */
 .panel {
-  height: 200vh;
+  height: 100vh;
   display: grid;
   place-items: center;
   color: white;
@@ -36,3 +86,28 @@ body.dark .panel .inner { color: white; }
 
 /* small helper so each panel appears distinct */
 .panel:nth-child(odd) .inner { opacity: 0.95; }
+
+
+/* Book (regular) */
+@font-face {
+  font-family: 'Circular Std';
+  src: url('/static/Fonts/CircularStd-Book.woff2') format('woff2');
+  font-weight: 400; /* normal */
+  font-style: normal;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'Circular Std';
+  src: url('/static/Fonts/CircularStd-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Circular Std';
+  src: url('/static/Fonts/CircularStd-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
