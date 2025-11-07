@@ -1,0 +1,124 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}PDF Scraper{% endblock %}
+
+{% block content %}
+    <div id="status-message" style="text-align:center; margin-bottom:10px;"></div>
+
+
+    {% if success_message %}
+    <div class="success-box">
+        {{ success_message }}
+    </div>
+    {% endif %}
+
+
+
+    <!-- Leaving this here for the loading bar
+    <div id="progress-container" style="width: 100%; background: #eee; height: 10px; margin-bottom:10px;">
+    <div id="progress-bar" style="width: 0%; height: 100%; background: #4caf50;"></div>
+    </div>
+    -->
+    <!-- This handles when the program screws up and gives an error message -->
+    {% if error_message %}
+    <div class="error-box">
+        {{ error_message }}
+    </div>
+    {% endif %}
+
+    <h1>PDF Scraper</h1>
+
+
+
+
+    <form method="POST" enctype=multipart/form-data id="upload-form">
+        <!-- This is how we stylize our submission buttons.  Need to make a nice label, then tie it to the ID'd submission button we hid below -->
+        
+        <div class="button-row">
+            <label for="file-upload" class="button">
+                Choose File
+            </label>
+
+            <!-- This is the actual invisible button  -->
+            <input id="file-upload" type="file" name="files" style="display: none;" multiple>
+
+            <label for="submit" class="button">
+                Scrape!
+            </label>
+            
+            
+            <input id='submit' type=submit value=Upload  style="display: none;">
+
+            <!--Add reset button that appears conditionally-->
+            <button type="submit" name="reset" value="1" class="button">Reset</button>
+
+        </div>
+        
+        <!-- Filename displayed below buttons -->
+        <div id="file-names" class="file-name">No file chosen</div>
+
+
+        <!-- This updates the name the file-name element with the filename-->
+        <script>
+            const fileInput = document.getElementById('file-upload');
+            const fileNamesDiv = document.getElementById('file-names');
+            const form = document.getElementById('upload-form');
+            const statusMessage = document.getElementById('status-message');
+
+
+            function showSuccess(msg) {
+            statusMessage.innerHTML = `<div class="success-box">${msg}</div>`;
+            // Hide after a few seconds
+            setTimeout(() => { statusMessage.innerHTML = ""; }, 5000);
+            }
+
+
+            /* For reasons I don't yet understand, the \n only gives us a new line if we also have 'white-space: pre-line' in the file-name section of the CSS.  
+            It was previously no wrap which forced everything onto one line*/
+            fileInput.addEventListener('change', function() {
+                const files = Array.from(fileInput.files);
+                fileNamesDiv.textContent = files.length ? files.map(f => f.name).join("\n") : "No files chosen";
+            });
+
+            //This currently cheats and automatically says success after a few seconds.  HATE THAT
+            form.addEventListener('submit', function(e) {
+                // Show loading/progress
+                statusMessage.textContent = "Processing files...";
+                
+                // Small timeout to simulate processing
+                setTimeout(() => {
+                    showSuccess("It was successful!");
+                    fileInput.value = "";          // clear selected files
+                    fileNamesDiv.textContent = "No files chosen";
+                }, 3000);
+            });
+
+
+            /*I'm keeping this in as a reference, it makes a loading bar that's....okay.  Does work though
+            form.addEventListener('submit', function(e) {
+                const progressBar = document.getElementById('progress-bar');
+                progressBar.style.width = "0%";
+                let width = 0;
+                const interval = setInterval(() => {
+                    width += 10;
+                    progressBar.style.width = width + "%";
+                    if (width >= 100) clearInterval(interval);
+                }, 100); // simulate progress
+
+                // hide bar after success
+                setTimeout(() => progressBar.style.width = "0%", 1500);
+            }); */
+
+
+        </script>
+
+
+    </form>
+
+
+
+
+{% endblock %}
+
+

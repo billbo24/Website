@@ -1,0 +1,38 @@
+/* style.css */
+
+/* Set the background color for the whole page */
+
+html, body {
+  height: 100%;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  transition: background-color 0.2s linear; /* small smoothing fallback */
+}
+
+
+/* full-page sections */
+.panel {
+  height: 200vh;
+  display: grid;
+  place-items: center;
+  color: white;
+  /* make section backgrounds transparent so body bg shows through */
+  background: transparent;
+  padding: 2rem;
+  text-align: center;
+}
+
+.inner {
+  /* background: rgba(0,0,0,0.12); */
+  padding: 2rem 3rem;
+  /* border-radius: 12px; */
+  /*backdrop-filter: blur(4px);*/
+  font-size: 2rem;
+  /* box-shadow: 0 6px 18px rgba(0,0,0,0.12); */
+}
+
+/* optional: keep content readable on light backgrounds */
+.panel .inner { color: #111; }
+body.dark .panel .inner { color: white; }
+
+/* small helper so each panel appears distinct */
+.panel:nth-child(odd) .inner { opacity: 0.95; }
