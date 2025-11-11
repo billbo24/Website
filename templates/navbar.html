@@ -4,13 +4,14 @@
 <nav class="navbar">
     <div class="logo">
         <a href="{{ url_for('home') }}">
+
             <img src="{{ url_for('static', filename='images/logo2.svg') }}" alt="{{ company_name }} logo" class="logo-img">
            {{company_name}}
         </a>
     </div>
     <div class="nav-links">
-        <a href="{{ url_for('home') }}">Automation</a>
-        <a href="{{ url_for('home') }}">Optimization</a>
-        <a href="{{ url_for('home') }}">Analysis</a>
+        <a href="{{ url_for('automation') }}">Automation</a>
+        <a href="{{ url_for('optimization') }}">Optimization</a>
+        <a href="{{ url_for('analysis') }}">Analysis</a>
     </div>
 </nav>

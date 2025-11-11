@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Home - MySite{% endblock %}
+
+{% block content %}
+    <section class="panel" data-color="#ff6b6b">
+      <div class="inner">Welcome to {{company_name}} </div>
+    </section>
+
+    <!--Commenting all of this out for now
+    <section class="panel" data-color="#ffd93d">
+      <div class="inner">Section 2</div>
+    </section>
+
+    <section class="panel" data-color="#6bcfff">
+      <div class="inner">Section 3</div>
+    </section>
+
+    <section class="panel" data-color="#8a9bff">
+      <div class="inner">Section 4</div>
+    </section>
+    -->
+  </main>
+
+  <script src="{{ url_for('static', filename='functions.js') }}"></script>
+{% endblock %}

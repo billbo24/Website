@@ -11,6 +11,7 @@ html, body {
 
   font-family: 'Circular Std', Arial, sans-serif;
   /*font-size: 16px;*/
+  color: black;
 }
 
 
@@ -28,24 +29,26 @@ html, body {
   justify-content: space-between;
   
   padding: 10px 40px; /* stays inside the width */
-  background-color: rgba(32, 198, 29, 0.0);
-  color: white;
+
+  /* color: white; */
 }
 
 
 .logo-img {
-  height: 40px;           /* Adjust as needed */
+  height: 60px;           /* Adjust as needed */
   width: auto;
   vertical-align: middle; /* keeps it aligned with text or nav links */
-  filter: brightness(0) invert(1); /* optional: makes black logo appear white on dark bg */
+  /*filter: brightness(0) invert(1);*/ /* optional: makes black logo appear white on dark bg */
 }
 
 .nav-links a {
   margin-left: 25px;
   text-decoration: none;
-  color: white;
+  /* color: white; */
+  color: black;
   font-size: 1.1em;
   transition: color 0.2s;
+  
 }
 
 .nav-links a:hover {
@@ -53,18 +56,20 @@ html, body {
 }
 
 .logo a {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: white;
+  font-size: 1.8em;
+  /* font-weight: bold; */
+  /* color: white; */
+  color: black;
   text-decoration: none;
 }
+
 
 /* full-page sections */
 .panel {
   height: 100vh;
   display: grid;
   place-items: center;
-  color: white;
+  /* color: white; */
   /* make section backgrounds transparent so body bg shows through */
   background: transparent;
   padding: 2rem;
@@ -81,12 +86,73 @@ html, body {
 }
 
 /* optional: keep content readable on light backgrounds */
-.panel .inner { color: #111; }
-body.dark .panel .inner { color: white; }
+.panel .inner { 
+  color: #111; 
+}
+
+body.dark .panel .inner { 
+  color: white; 
+}
 
 /* small helper so each panel appears distinct */
-.panel:nth-child(odd) .inner { opacity: 0.95; }
+.panel:nth-child(odd) .inner { 
+  opacity: 0.95; 
+}
 
+
+.landing-container {
+  position: relative;
+  height: 100vh; /* full viewport height */
+  width: 100%;
+  background: url("/static/images/background.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.landing-blurb {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  /* color: white; */
+  font-size: 2rem;
+  max-width: 50%;
+  line-height: 1.4;
+}
+
+.main-blurb {
+  font-size: 2.5rem;
+  font-weight: 300;
+  opacity: 0.9;
+  text-align: left;
+}
+
+.sub-blurb {
+  font-size: 1.25rem;
+  font-weight: 300;
+  opacity: 0.9;
+  text-align: left;
+}
+
+/* Main content blurb container */
+.content-container {
+  position: relative;
+  height: 100vh; /* full viewport height */
+  width: 100%;
+  /* background: url("/static/images/background.jpg") no-repeat center center; */
+  background-size: cover;
+  text-align: center;
+}
+
+.content-blurb {
+  position: absolute;
+  top: 30%;
+  left:50%;
+  transform: translateX(-50%); /* This shifts it back half of its own width.  If it's moved 50% then the left side is at the 50% point */
+  text-align: left;
+  /* color: white; */
+  font-size: 2rem;
+  max-width: 50%;
+  line-height: 1.4;
+}
 
 /* Book (regular) */
 @font-face {
@@ -111,3 +177,6 @@ body.dark .panel .inner { color: white; }
   font-weight: 700;
   font-style: normal;
 }
+
+
+
